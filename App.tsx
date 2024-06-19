@@ -10,13 +10,12 @@ import {
   View,
 } from 'react-native';
 
-//navigation
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {enableScreens} from 'react-native-screens';
 
-import Home from './screens/Home';
-import Details from './screens/details';
+import Home from './src/screens/Home';
+import Details from './src/screens/details';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -24,6 +23,7 @@ export type RootStackParamList = {
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+// const Stack = createNativeStackNavigator()
 
 function App(): JSX.Element {
   return (
