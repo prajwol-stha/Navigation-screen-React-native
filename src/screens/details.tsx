@@ -4,17 +4,18 @@ import React from 'react';
 // navigation
 
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../App';
+// import {RootStackParamList} from '../../App';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
-type DetailsProps = NativeStackScreenProps<RootStackParamList, 'Details'>;
+// type DetailsProps = NativeStackScreenProps<RootStackParamList, 'Details'>;
 
 const Details = ({route}: DetailsProps) => {
   const {productId} = route.params;
 
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =useNavigation();
+    // useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    
   return (
     <View style={styles.container}>
       <Text style={styles.smallText}>Details: {productId}</Text>
