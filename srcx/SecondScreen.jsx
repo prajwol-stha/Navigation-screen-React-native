@@ -1,12 +1,16 @@
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { ThemeContext } from './ThemeContext';
 
 const SecondScreen = ({ route }) => {
   const { userName } = route.params;
+  const { theme } = useContext(ThemeContext);
+
+  const isDarkMode = theme === 'dark';
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello, {userName}</Text>
+    <View style={[styles.container, { backgroundColor: isDarkMode ? '#333' : '#fff' }]}>
+      <Text style={[styles.text, { color: isDarkMode ? '#fff' : '#000' }]}>Hello, {userName}</Text>
     </View>
   );
 };
@@ -21,6 +25,5 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    color:'black'
   },
 });
