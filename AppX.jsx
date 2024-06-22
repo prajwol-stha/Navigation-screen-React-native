@@ -1,28 +1,36 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
-
+import React, { useContext } from 'react';
+import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { ThemeProvider, ThemeContext } from './srcx/ThemeContext'; 
 
 import Homescreen from './srcx/Homescreen';
 import SecondScreen from './srcx/SecondScreen';
 import Profile from './srcx/Profile';
-
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 function HomeScreen() {
   return (
-    <Homescreen/>
+    <Homescreen />
   );
 }
 
-
 function MyTabs() {
+  const { theme } = useContext(ThemeContext);
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator 
+      screenOptions={{ 
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: theme === 'dark' ? '#333' : '#fff',
+        },
+        tabBarActiveTintColor: theme === 'dark' ? '#fff' : '#000',
+        tabBarInactiveTintColor: theme === 'dark' ? '#888' : '#666',
+      }}
+    >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
@@ -33,7 +41,6 @@ function MyStack() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Tabssss" component={MyTabs} />
-      <Stack.Screen name="Homescreen" component={Homescreen} />
       <Stack.Screen name="SecondScreen" component={SecondScreen} />
     </Stack.Navigator>
   );
@@ -41,9 +48,11 @@ function MyStack() {
 
 const AppX = () => {
   return (
-    <NavigationContainer>
-      <MyStack />
-    </NavigationContainer>
+    <ThemeProvider>
+      <NavigationContainer>
+        <MyStack />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 };
 
