@@ -8,6 +8,9 @@ import { ThemeProvider, ThemeContext } from './srcx/ThemeContext';
 import Homescreen from './srcx/Homescreen';
 import SecondScreen from './srcx/SecondScreen';
 import Profile from './srcx/Profile';
+import ScrollviewScreen from './srcx/ScrollviewScreen';
+import FlatlistScreen from './srcx/FlatlistScreen';
+import Instagram from './srcx/Instagram';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -33,6 +36,9 @@ function MyTabs() {
     >
       <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="ScrollviewScreen" component={ScrollviewScreen} />
+      <Tab.Screen name="FlatlistScreen" component={FlatlistScreen} />
+      <Tab.Screen name="Instagram" component={Instagram} />
     </Tab.Navigator>
   );
 }
