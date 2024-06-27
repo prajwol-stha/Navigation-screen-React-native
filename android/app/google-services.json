@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1082102801553",
+    "project_id": "notifications-rn-2c1ba",
+    "storage_bucket": "notifications-rn-2c1ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082102801553:android:7704f0c7429d804be28b30",
+        "android_client_info": {
+          "package_name": "com.navigationsc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkYOtDf_EViy4F_VtpcuZgKFVdfR5F-04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

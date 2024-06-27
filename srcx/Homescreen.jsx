@@ -1,10 +1,29 @@
-import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useState, useContext ,useEffect} from 'react';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View,Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import ThemeToggle from './ThemeToggle';
 import { ThemeContext } from './ThemeContext';
 
+import messaging from '@react-native-firebase/messaging'
+
 const Homescreen = () => {
+  useEffect (() => {
+    getDeviceToken();
+    }, []);
+
+  const getDeviceToken = async () => {
+  let token = await messaging().getToken();
+  console.log(token);
+  };
+
+  useEffect(() => {
+    const unsubscribe = messaging().onMessage(async remoteMessage => {
+      Alert.alert('A new FCM message arrived in Foreground!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
+  }, []);
+
   const navigation = useNavigation();
   const [name, setName] = useState('');
   const { theme } = useContext(ThemeContext);
